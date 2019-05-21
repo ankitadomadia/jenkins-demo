@@ -4,6 +4,7 @@ pipeline {
         stage('Clone') {
             steps {
                 echo "checking out the repo"
+                echo "testing"
                 git 'https://github.com/edureka-devops/jenkins-demo.git'
             
             }
