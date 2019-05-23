@@ -43,7 +43,7 @@ pipeline {
         stage('clean up') {
             steps {
                 echo "cleaning up the workspace"
-                cleanWs()
+                //cleanWs()
             }
         }
         stage("Metrics"){
@@ -53,7 +53,9 @@ pipeline {
               //node('node_TEST1'){
                 //  git 'https://github.com/ankitadomadia/jenkins-demo.git'
                   //git 'https://github.com/vathsalahn/jenkins-demo.git'
-                sh "cd javancss-master ; mvn test javancss:report ; pwd"
+                sh "mkdir javancss-master; cd javancss-master ;pwd"
+                sh "mvn test javancss:report ; pwd"
+                //sh "cd javancss-master ; mvn test javancss:report ; pwd"
                 //}
             
             //"FindBugs Report" : {
@@ -61,8 +63,9 @@ pipeline {
                 sh "mkdir javancss1 ; cd javancss1 ;pwd"
                 //git 'https://github.com/ankitadomadia/jenkins-demo.git'
                 //git 'https://github.com/vathsalahn/jenkins-demo.git'
-                sh "cd javancss-master ; mvn findbugs:findbugs ; pwd"
-                deleteDir()
+                sh "cd javancss1 ; mvn findbugs:findbugs ; pwd"
+                //sh "cd javancss-master ; mvn findbugs:findbugs ; pwd"
+                //deleteDir()
                 //}
          //)
             }
