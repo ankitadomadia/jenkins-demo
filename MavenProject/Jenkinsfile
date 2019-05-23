@@ -35,9 +35,9 @@ pipeline {
             }
         }
         stage('publish html report') {
-            steps{
+            steps {
                 echo "publishing the html report"
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'coverage', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'RCov Report'])
             }
         }
         stage('clean up') {
@@ -47,7 +47,7 @@ pipeline {
             }
         }
         stage("Metrics"){
-            steps{
+            steps {
             parallel ( "JavaNcss Report":   
             {
               node('node_TEST1'){
