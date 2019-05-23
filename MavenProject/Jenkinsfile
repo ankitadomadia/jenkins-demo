@@ -53,9 +53,7 @@ pipeline {
               //node('node_TEST1'){
                 //  git 'https://github.com/ankitadomadia/jenkins-demo.git'
                   //git 'https://github.com/vathsalahn/jenkins-demo.git'
-                sh "mkdir javancss-master; cd javancss-master ;pwd"
-                sh "mvn test javancss:report ; pwd"
-                //sh "cd javancss-master ; mvn test javancss:report ; pwd"
+                sh "cd javancss-master ; mvn test javancss:report ; pwd"
                 //}
             
             //"FindBugs Report" : {
