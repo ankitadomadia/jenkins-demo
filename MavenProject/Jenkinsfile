@@ -37,7 +37,7 @@ pipeline {
         stage('publish html report') {
             steps {
                 echo "publishing the html report"
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'coverage', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'RCov Report'])
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'RCov Report'])
             }
         }
         stage('clean up') {
@@ -48,25 +48,26 @@ pipeline {
         }
         stage("Metrics"){
             steps {
-            parallel ( "JavaNcss Report":   
-            {
-              node('node_TEST1'){
-                  git 'https://github.com/ankitadomadia/jenkins-demo.git'
+            //parallel ( "JavaNcss Report":   
+           // {
+              //node('node_TEST1'){
+                //  git 'https://github.com/ankitadomadia/jenkins-demo.git'
                   //git 'https://github.com/vathsalahn/jenkins-demo.git'
                 sh "cd javancss-master ; mvn test javancss:report ; pwd"
-                  }
-            },
-            "FindBugs Report" : {
-            node('node_TEST1'){
+               //   }
+            }
+            steps {
+            //"FindBugs Report" : {
+            //node('node_TEST1'){
                 sh "mkdir javancss1 ; cd javancss1 ;pwd"
-                git 'https://github.com/ankitadomadia/jenkins-demo.git'
+                //git 'https://github.com/ankitadomadia/jenkins-demo.git'
                 //git 'https://github.com/vathsalahn/jenkins-demo.git'
                 sh "cd javancss-master ; mvn findbugs:findbugs ; pwd"
                 deleteDir()
-                }
+                //}
 
               }
-         )
+         //)
             }
          post{
                 success {
