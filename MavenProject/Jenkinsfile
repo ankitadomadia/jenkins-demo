@@ -61,8 +61,8 @@ pipeline {
                 sh "mkdir javancss1 ; cd javancss1 ;pwd"
                 //git 'https://github.com/ankitadomadia/jenkins-demo.git'
                 //git 'https://github.com/vathsalahn/jenkins-demo.git'
-                sh "cd javancss1 ; mvn findbugs:findbugs ; pwd"
-                //sh "cd javancss-master ; mvn findbugs:findbugs ; pwd"
+                //sh "cd javancss1 ; mvn findbugs:findbugs ; pwd"
+                sh "cd javancss-master ; mvn findbugs:findbugs ; pwd"
                 //deleteDir()
                 //}
          //)
